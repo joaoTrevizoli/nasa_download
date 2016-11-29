@@ -12,11 +12,15 @@ class Urls(object):
 
         if not os.path.exists(self.base_dir):
             os.mkdir(self.base_dir)
-        self.text_files = ["{}/{}".format(self.base_dir, ) for i in os.listdir(self.base_dir) if i.endswith(".txt")]
+        self.text_files = os.listdir(self.base_dir)
         if len(self.text_files) == 0:
             raise UrlFileNotFound("None url file found in the {}, "
                                   "please add url files and retry!".format(folder))
 
-if __name__ == '__main__':
-    paths = Urls("urls")
-    print(paths.text_files)
+    def url_files(self):
+        return ["{}/{}".format(self.base_dir, i) for i in os.listdir(self.base_dir) if i.endswith(".txt")]
+
+    def urls(self):
+        for i in self.url_files():
+            with open(i, mode="r") as url_file:
+                return [line.replace("\n", '') for line in url_file.readlines()]
