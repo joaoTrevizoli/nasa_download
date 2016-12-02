@@ -5,6 +5,7 @@ import time
 
 from url_manager import Urls
 
+
 class DownloadFile(object):
     __base_dir = os.path.abspath(os.path.dirname(__file__)) + "/data/"
     __headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) '
