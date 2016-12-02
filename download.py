@@ -37,9 +37,9 @@ class DownloadFile(object):
                                                                last_file,
                                                                self.file_name))
             dl = 0
-            for chunck in self.r.iter_content(1024):
-                dl += len(chunck)
-                f.write(chunck)
+            for chunk in self.r.iter_content(1024):
+                dl += len(chunk)
+                f.write(chunk)
                 done = int(50 * dl / self.size)
                 sys.stdout.write("\r[%s%s] %s kps" % ('=' * done, ' ' * (50 - done), (dl*0.001 // (time.clock() - start))))
             print('')
